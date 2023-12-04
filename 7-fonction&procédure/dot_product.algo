@@ -1,0 +1,70 @@
+PROCEDURE dot_product(V1,V2 : ARRAY_OF FLOAT, var PS:FLOAT)
+VAR
+i : INTEGER;
+BEGIN
+PS := 0;
+FOR i FROM 0 TO V1.length-1 STEP 1  DO
+PS:=PS+V1[i]*V2[i]
+END_FOR
+Write(PS) 
+END
+
+
+ALGORITHM Produit_scalaire
+VAR
+ps : FLOAT;
+V1,V2: ARRAY_OF FLOAT[];
+i,n :INTEGER;
+BEGIN
+write ("longeur V1 & V2");
+read (n);
+FOR i FROM 0 TO n-1 STEP 1  DO
+    read (V1[i]);
+END_FOR
+FOR i FROM 0 TO n-1 STEP 1  DO
+    read (V2[i]);
+END_FOR
+dot_product(V1, V2, ps)
+IF (ps := 0) THEN
+Write("V1 and V2 ortoghonaux");
+ELSE
+Write("V1 and V2 not ortoghonaux");
+END_IF
+END
+
+//************************************
+
+FUNCTION dot_product_function(V1,V2: ARRAY_OF FLOAT[]): FLOAT
+VAR
+PS: FLOAT;
+i:INTEGER;
+BEGIN
+PS := 0;
+FOR i FROM 0 TO V1.length-1 STEP 1  DO
+PS:=PS+V1[i]*V2[i]
+RETURN PS ;
+END 
+
+
+ALGORITHM Produit_scalaire
+VAR
+PS: FLOAT;
+V1,V2: ARRAY_OF FLOAT[];
+i,n :INTEGER;
+BEGIN
+write ("longeur V1 & V2");
+read (n);
+FOR i FROM 0 TO n-1 STEP 1  DO
+    read (V1[i]);
+END_FOR
+FOR i FROM 0 TO n-1 STEP 1  DO
+    read (V2[i]);
+END_FOR
+dot_product_function(PS);
+PS := dot_product(V1, V2)
+IF (PS := 0) THEN
+Write("V1 and V2 ortoghonaux");
+ELSE
+Write("V1 and V2 not ortoghonaux");
+END_IF
+END
